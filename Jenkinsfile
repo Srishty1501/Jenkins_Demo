@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-    
+    environment {
+        SETTINGS_XML = credentials('maven-settings-config')
+    }
 
     stages {
         stage('Example') {
@@ -21,7 +23,7 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                bat 'mvn clean install' 
+                bat 'mvn -s $SETTINGS_XML clean install' 
             }
             post {
                 success {
@@ -32,7 +34,7 @@ pipeline {
 
         stage ('deploy artifacts') {
             steps {
-               bat 'mvn deploy -Dbuildnumber=${env.BUILD_NUMBER} -DbuildUrl=${env.BUILD_URL} -DagentName=${env.NODE_NAME}' 
+               bat 'mvn -s $SETTINGS_XML deploy -Dbuildnumber=${env.BUILD_NUMBER} -DbuildUrl=${env.BUILD_URL} -DagentName=${env.NODE_NAME}' 
             }
         }
     }

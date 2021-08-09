@@ -49,8 +49,8 @@
                     <configuration>
                         <publisher>
                             <contextUrl>http://localhost:8081/artifactory</contextUrl>
-                            <username>admin</username>
-                            <password>Jumpstreet@21</password>
+                            <username>${username}</username>
+                            <password>${password}</password>
                             <repoKey>demo-libs-release</repoKey>
                         </publisher>
 						<buildInfo>
@@ -66,17 +66,5 @@
 		</plugins>
 	</build>
 
-	<distributionManagement>
-	<repository>
-        <id>central</id>
-        <name>LAPTOP-OTPHPLIR-releases</name>
-        <url>http://localhost:8081/artifactory/demo-libs-release-local</url>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>LAPTOP-OTPHPLIR-snapshots</name>
-        <url>http://localhost:8081/artifactory/demo-libs-snapshot-local</url>
-    </snapshotRepository>
-</distributionManagement>
-
+	
 </project>
