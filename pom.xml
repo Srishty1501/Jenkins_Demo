@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -37,5 +37,18 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+	<repository>
+        <id>central</id>
+        <name>LAPTOP-OTPHPLIR-releases</name>
+        <url>http://localhost:8081/artifactory/demo-libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>LAPTOP-OTPHPLIR-snapshots</name>
+        <url>http://localhost:8081/artifactory/demo-libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
 
 </project>
