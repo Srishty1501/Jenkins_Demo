@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -47,18 +47,12 @@
                         <goal>publish</goal>
                     </goals>
                     <configuration>
-                        <publisher>
-                            <contextUrl>http://localhost:8081/artifactory</contextUrl>
-                            <username>${username}</username>
-                            <password>${password}</password>
-                            <repoKey>demo-libs-release</repoKey>
-                        </publisher>
 						<buildInfo>
                                 <buildName>plugin-demo</buildName>
                                 <buildNumber>${buildnumber}</buildNumber>
                                 <buildUrl>${buildUrl}</buildUrl>
 								<agentName>${agentName}</agentName>
-                        </buildInfo>
+                            </buildInfo>
                     </configuration>
                 </execution>
             </executions>
@@ -66,5 +60,17 @@
 		</plugins>
 	</build>
 
-	
+	<distributionManagement>
+	<repository>
+        <id>central</id>
+        <name>LAPTOP-OTPHPLIR-releases</name>
+        <url>http://localhost:8081/artifactory/demo-libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>LAPTOP-OTPHPLIR-snapshots</name>
+        <url>http://localhost:8081/artifactory/demo-libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
+
 </project>
