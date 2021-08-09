@@ -29,5 +29,11 @@ pipeline {
                 }
             }
         }
+
+        stage ('deploy artifacts') {
+            steps {
+               bat 'mvn deploy -Dbuildnumber=${env.BUILD_NUMBER} -DbuildUrl=${env.BUILD_URL} -DagentName=${env.NODE_NAME}' 
+            }
+        }
     }
 }

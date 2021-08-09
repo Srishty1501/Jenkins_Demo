@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -35,6 +35,34 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+            <groupId>org.jfrog.buildinfo</groupId>
+            <artifactId>artifactory-maven-plugin</artifactId>
+            <version>3.2.3</version>
+            <inherited>false</inherited>
+            <executions>
+                <execution>
+                    <id>build-info</id>
+                    <goals>
+                        <goal>publish</goal>
+                    </goals>
+                    <configuration>
+                        <publisher>
+                            <contextUrl>http://localhost:8081/artifactory</contextUrl>
+                            <username>admin</username>
+                            <password>Jumpstreet@21</password>
+                            <repoKey>demo-libs-release</repoKey>
+                        </publisher>
+						<buildInfo>
+                                <buildName>plugin-demo</buildName>
+                                <buildNumber>${buildnumber}</buildNumber>
+                                <buildUrl>${buildUrl}</buildUrl>
+								<agentName>${agentName}</agentName>
+                        </buildInfo>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
 		</plugins>
 	</build>
 
